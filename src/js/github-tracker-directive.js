@@ -39,13 +39,13 @@
     return directive;
 
     /** @ngInject */
-    function GithubTracker($log, $timeout, githubActivityService, wittyMessage) {
+    function GithubTracker($log, $timeout, githubActivityService, witty) {
       var vm = this;
       vm.activity = {
         isLoaded: false
       };
       vm.refresh = refresh;
-      vm.loadingMessage = wittyMessage.getRandom();
+      vm.loadingMessage = witty.message();
 
       activate();
 
@@ -61,7 +61,7 @@
         }
         vm.isRefreshing = true;
         vm.activity.isLoaded = false;
-        vm.loadingMessage = wittyMessage.getRandom();
+        vm.loadingMessage = witty.message();
 
         function delayed() {
           return getActivity().then(function () {
