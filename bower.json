@@ -1,0 +1,30 @@
+{
+  "name": "angular-github-tracker",
+  "version": "0.0.1",
+  "authors": [
+    "Jordon de Hoog <developer@hoogit.ca>"
+  ],
+  "description": "Gets the recent push events from a selected users GitHub account",
+  "main": "github-tracker.min.js",
+  "keywords": [
+    "angular",
+    "github",
+    "commits",
+    "push"
+  ],
+  "license": "MIT",
+  "homepage": "hoogit.ca",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.5",
+    "angular-moment": "~0.10.2",
+    "bootstrap": "~3.3.5",
+    "font-awesome": "~4.4.0"
+  }
+}
