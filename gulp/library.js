@@ -2,7 +2,8 @@
 
 var path = require('path');
 var gulp = require('gulp');
-var conf = require('./gulp-conf');
+
+var conf = require('./conf');
 
 var $ = require('gulp-load-plugins')({
   pattern: [
@@ -24,6 +25,7 @@ gulp.task('scripts', ['lint'], function () {
     , jsFilter = $.filter('**/*.js');
 
   return gulp.src([
+    path.join(conf.paths.src, 'js/*.module.js'),
     path.join(conf.paths.src, '**/*.{js,html}')
   ])
     .pipe(htmlFilter)
@@ -33,7 +35,7 @@ gulp.task('scripts', ['lint'], function () {
       quotes: true
     }))
     .pipe($.angularTemplatecache(conf.name + '.tpl.js', {
-      module: conf.name,
+      module: conf.moduleName,
       root: 'app'
     }))
     .pipe(htmlFilter.restore())
@@ -82,12 +84,4 @@ gulp.task('uglify', ['scripts', 'styles'], function () {
 
 gulp.task('clean', function (done) {
   $.del([path.join(conf.paths.dist, '/**/*'), path.join(conf.paths.tmp, '/**/*')], done);
-});
-
-gulp.task('build', ['clean'], function () {
-  gulp.start('uglify');
-})
-
-gulp.task('default', function () {
-  gulp.start('build');
 });
