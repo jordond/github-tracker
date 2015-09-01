@@ -12,7 +12,7 @@
    *
    */
   angular
-    .module('resume')
+    .module('githubTracker')
     .factory('witty', witty);
 
   /** @ngInject */

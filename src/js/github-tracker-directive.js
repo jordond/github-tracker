@@ -17,7 +17,7 @@
    * refreshDelay (optional) - $timeout delay for refreshing, in seconds (default 1)
    */
   angular
-    .module('resume')
+    .module('githubTracker')
     .directive('githubTracker', GithubTracker);
 
   function GithubTracker() {
@@ -31,7 +31,7 @@
       },
       templateUrl: 'github-tracker-directive.tpl.html',
       replace: false,
-      controller: GithubTracker,
+      controller: GithubTrackerCtrl,
       controllerAs: 'vm',
       bindToController: true
     };
@@ -39,7 +39,7 @@
     return directive;
 
     /** @ngInject */
-    function GithubTracker($log, $timeout, githubActivityService, witty) {
+    function GithubTrackerCtrl($log, $timeout, githubActivityService, witty) {
       var vm = this;
       vm.activity = {
         isLoaded: false

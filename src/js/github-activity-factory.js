@@ -14,7 +14,7 @@
    *
    */
   angular
-    .module('resume')
+    .module('githubTracker')
     .factory('githubActivityService', githubActivityService);
 
   /** @ngInject */
