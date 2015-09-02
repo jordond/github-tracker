@@ -91,3 +91,7 @@ gulp.task('uglify', ['scripts', 'styles'], function () {
 gulp.task('clean', function (done) {
   $.del([path.join(conf.paths.dist, '/**/*'), path.join(conf.paths.tmp, '/**/*')], done);
 });
+
+gulp.task('library', ['clean'], function () {
+  gulp.start('uglify');
+});
