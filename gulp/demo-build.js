@@ -10,7 +10,7 @@ var browserSync = require('browser-sync');
 var wiredep = require('wiredep').stream;
 var _ = require('lodash');
 
-gulp.task('demo-scripts', function () {
+gulp.task('demo:scripts', function () {
   return gulp.src(path.join(conf.demo.src, '/app/**/*.js'))
     .pipe($.jshint())
     .pipe($.jshint.reporter('jshint-stylish'))
@@ -18,7 +18,7 @@ gulp.task('demo-scripts', function () {
     .pipe($.size())
 });
 
-gulp.task('demo-styles', function () {
+gulp.task('demo:styles', function () {
   var lessOptions = {
     options: [
       'bower_components',

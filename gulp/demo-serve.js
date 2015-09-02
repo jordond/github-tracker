@@ -24,7 +24,7 @@ gulp.task('watch', ['inject'], function () {
     path.join(conf.demo.src, '/app/**/*.less')
   ], function(event) {
     if(isOnlyChange(event)) {
-      gulp.start('demo-styles');
+      gulp.start('demo:styles');
     } else {
       gulp.start('inject');
     }
@@ -32,7 +32,7 @@ gulp.task('watch', ['inject'], function () {
 
   gulp.watch(path.join(conf.demo.src, '/app/**/*.js'), function(event) {
     if(isOnlyChange(event)) {
-      gulp.start('demo-scripts');
+      gulp.start('demo:scripts');
     } else {
       gulp.start('inject');
     }

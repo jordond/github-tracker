@@ -10,7 +10,7 @@ var browserSync = require('browser-sync');
 var wiredep = require('wiredep').stream;
 var _ = require('lodash');
 
-gulp.task('inject', ['demo-scripts', 'demo-styles'], function () {
+gulp.task('inject', ['demo:scripts', 'demo:styles'], function () {
   var injectStyles = gulp.src([
     path.join(conf.demo.tmp, '/serve/app/**/*.css'),
     path.join('!' + conf.demo.src, '/serve/app/vendor.css')

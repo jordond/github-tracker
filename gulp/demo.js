@@ -77,12 +77,16 @@ gulp.task('other', function () {
     .pipe(gulp.dest(path.join(conf.demo.dist, '/')));
 });
 
-gulp.task('demo-clean', function (done) {
-  $.del([path.join(conf.demo.dist, '/**/*'), path.join(conf.demo.tmp, '/')], done);
+gulp.task('demo:clean', function (done) {
+  $.del([
+    path.join(conf.demo.dist, '/**/*'),
+    '!' + path.join(conf.demo.dist, '/.gitkeep'),
+    path.join(conf.demo.tmp, '/')
+  ], done);
 });
 
-gulp.task('demo-start', ['html', 'fonts', 'other']);
+gulp.task('demo:start', ['html', 'fonts', 'other']);
 
-gulp.task('demo-build', ['demo-clean'], function () {
-  gulp.start('demo-start');
+gulp.task('demo', ['demo:clean'], function () {
+  gulp.start('demo:start');
 });
