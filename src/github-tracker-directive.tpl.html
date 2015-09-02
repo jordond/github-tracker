@@ -3,11 +3,11 @@
     <div class="header">
       <h3>Latest Activity</h3>
       <div class="btn btn-link pull-right refresh" ng-click="vm.refresh()">
-        <i class="fa fa-refresh" ng-class="{ 'fa-spin': vm.isRefreshing }"></i>
+        <i class="refresh-icon" ng-class="{ 'icon-spin': vm.isRefreshing }"></i>
       </div>
     </div>
     <div class="loading" ng-hide="vm.activity.isLoaded">
-      <i class="fa fa-circle-o-notch fa-spin"></i>
+      <i class="loading-icon icon-spin"></i>
       <h4>{{ vm.loadingMessage }}</h4>
     </div>
     <div class="info" ng-show="vm.activity.isLoaded" ng-hide="vm.activity.hasError">
