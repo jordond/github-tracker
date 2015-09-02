@@ -78,6 +78,12 @@ gulp.task('uglify', ['scripts', 'styles'], function () {
     .pipe($.uglify({ preserveComments: $.uglifySaveLicense })).on('error', conf.errorHandler('Uglify'))
     .pipe($.rename(conf.name + '.min.js'))
     .pipe(jsFilter.restore())
+    .pipe(cssFilter)
+    .pipe($.sourcemaps.init())
+    .pipe($.csso())
+    .pipe($.sourcemaps.write())
+    .pipe($.rename(conf.name + '.min.css'))
+    .pipe(cssFilter.restore())
     .pipe(gulp.dest(path.join(conf.paths.dist, '/')))
     .pipe($.size({ title: path.join(conf.paths.dist, '/'), showFiles: true }));
 });
