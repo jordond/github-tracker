@@ -29,7 +29,7 @@ gulp.task('dist:library', ['clean'], function () {
  * Will build the demo for distribution, first requires the building of the
  * library to ensure an up-to-date dependency
  */
-gulp.task('dist:demo', ['library'], function () {
+gulp.task('dist:demo', ['uglify'], function () {
   gulp.start('demo');
 });
 
@@ -37,7 +37,7 @@ gulp.task('dist:demo', ['library'], function () {
  * Used when developing the library or the demo, it will build a dist version
  * of the library, then a non optimized version of the demo.
  */
-gulp.task('develop', ['library'], function () {
+gulp.task('develop', ['uglify'], function () {
   gulp.start('serve');
 });
 
