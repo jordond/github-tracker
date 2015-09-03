@@ -1,4 +1,4 @@
-<div class="box box-activity col-md-12">
+<div class="box box-activity c-m-12">
   <div class="content">
     <div class="header">
       <h3>Latest Activity</h3>
@@ -12,21 +12,21 @@
     </div>
     <div class="info" ng-show="vm.activity.isLoaded" ng-hide="vm.activity.hasError">
       <div class="row git-event-title">
-        <div class="col-md-4 col-sm-6 col-xs-6">
+        <div class="c-m-4 c-s-6 c-xs-6">
           <h4>Repository</h4>
         </div>
-        <div class="col-md-8 col-sm-6 col-xs-6">
+        <div class="c-m-8 c-s-6 c-xs-6">
           <h4>Commits</h4>
         </div>
       </div>
       <div class="row git-event-body" ng-repeat="event in vm.activity.events">
-        <div class="col-md-4">
+        <div class="c-m-4">
           <a href="http://github.com/{{ event.repo.name }}" target="_blank">
             <i class="fa fa-github fa-"></i> {{ event.repo.name }}
           </a>
           <div am-time-ago="event.created_at"></div>
         </div>
-        <div class="col-md-8">
+        <div class="c-m-8">
           <p ng-repeat="commit in event.payload.commits | filter:{distinct: true} | limitTo:vm.commitLimit || 3">
             <a href="http://github.com/{{ event.repo.name }}/tree/{{ event.payload.ref | branch }}" target="_blank">
               {{ event.payload.ref | branch }}

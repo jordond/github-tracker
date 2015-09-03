@@ -23,9 +23,7 @@
   ],
   "dependencies": {
     "angular": "~1.4.5",
-    "angular-moment": "~0.10.2",
-    "bootstrap": "~3.3.5",
-    "font-awesome": "~4.4.0"
+    "angular-moment": "~0.10.2"
   },
   "devDependencies": {
     "angular-animate": "~1.4.0",
