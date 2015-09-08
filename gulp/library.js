@@ -35,8 +35,7 @@ gulp.task('scripts', ['lint'], function () {
       quotes: true
     }))
     .pipe($.angularTemplatecache(conf.name + '.tpl.js', {
-      module: conf.moduleName,
-      root: 'app'
+      module: conf.moduleName
     }))
     .pipe(htmlFilter.restore())
     .pipe(jsFilter)

@@ -18,7 +18,7 @@
     .factory('githubActivityService', githubActivityService);
 
   /** @ngInject */
-  function githubActivityService($log, $http) {
+  function githubActivityService($q, $log, $http) {
     var apiHost = 'https://api.github.com/users/'
       , eventLimit = 2
       , service = {};
@@ -31,11 +31,11 @@
     return service;
 
     function getActivity(user, limit) {
-      if (user === '') {
-        return {
+      if (!user || user === angular.isUndefined()) {
+        return $q.when({
           hasError: true,
           message: 'No user was supplied'
-        };
+        });
       }
       eventLimit = limit;
       return $http.get(apiHost + user + '/events')
