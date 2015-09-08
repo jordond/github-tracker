@@ -2,7 +2,8 @@
 
 var path = require('path');
 var gulp = require('gulp');
-var conf = require('./gulp-conf');
+
+var conf = require('./conf');
 
 var $ = require('gulp-load-plugins')({
   pattern: [
@@ -24,6 +25,7 @@ gulp.task('scripts', ['lint'], function () {
     , jsFilter = $.filter('**/*.js');
 
   return gulp.src([
+    path.join(conf.paths.src, 'js/*.module.js'),
     path.join(conf.paths.src, '**/*.{js,html}')
   ])
     .pipe(htmlFilter)
@@ -33,8 +35,7 @@ gulp.task('scripts', ['lint'], function () {
       quotes: true
     }))
     .pipe($.angularTemplatecache(conf.name + '.tpl.js', {
-      module: conf.name,
-      root: 'app'
+      module: conf.moduleName
     }))
     .pipe(htmlFilter.restore())
     .pipe(jsFilter)
@@ -76,6 +77,12 @@ gulp.task('uglify', ['scripts', 'styles'], function () {
     .pipe($.uglify({ preserveComments: $.uglifySaveLicense })).on('error', conf.errorHandler('Uglify'))
     .pipe($.rename(conf.name + '.min.js'))
     .pipe(jsFilter.restore())
+    .pipe(cssFilter)
+    .pipe($.sourcemaps.init())
+    .pipe($.csso())
+    .pipe($.sourcemaps.write())
+    .pipe($.rename(conf.name + '.min.css'))
+    .pipe(cssFilter.restore())
     .pipe(gulp.dest(path.join(conf.paths.dist, '/')))
     .pipe($.size({ title: path.join(conf.paths.dist, '/'), showFiles: true }));
 });
@@ -84,10 +91,6 @@ gulp.task('clean', function (done) {
   $.del([path.join(conf.paths.dist, '/**/*'), path.join(conf.paths.tmp, '/**/*')], done);
 });
 
-gulp.task('build', ['clean'], function () {
+gulp.task('library', ['clean'], function () {
   gulp.start('uglify');
-})
-
-gulp.task('default', function () {
-  gulp.start('build');
 });

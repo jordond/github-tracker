@@ -12,7 +12,7 @@
    *
    */
   angular
-    .module('resume')
+    .module('githubTracker')
     .filter('branch', branch);
 
   function branch() {

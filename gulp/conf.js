@@ -5,18 +5,27 @@ var gutil = require('gulp-util');
 /**
  *  The main paths for build files
  */
-exports.paths = {
+var paths = {
   src: 'src',
   dist: 'dist',
   tmp: '.tmp',
   demo: 'demo'
 };
+exports.paths = paths;
+
+exports.demo = {
+  src: paths.demo + '/' + paths.src,
+  dist: paths.demo + '/' + paths.dist,
+  tmp: paths.demo + '/' + paths.tmp
+}
 
 exports.name = 'github-tracker';
+exports.moduleName = 'githubTracker';
 
 exports.wiredep = {
-  exclude: [/jquery/],
-  directory: 'bower_components'
+  exclude: [/jquery/, /bootstrap/],
+  directory: 'bower_components',
+  devDependencies: true
 };
 
 /**
